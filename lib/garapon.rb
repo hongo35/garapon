@@ -1,7 +1,3 @@
-# coding: utf-8
-$:.unshift(__FILE__)
-require './garapon/api'
-
-module Garapon
-end
-
+# encoding: utf-8
+$:.unshift(File.dirname(__FILE__))
+require 'garapon/api'

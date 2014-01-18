@@ -1,4 +1,3 @@
-require 'active_support/all'
 require 'httpclient'
 require 'oj'
 
@@ -73,6 +72,10 @@ module Garapon
       client = HTTPClient.new
       res_str = client.post_content(url, condition)
       res = Oj.load(res_str, :mode => :compat)
+      
+      if res['status'] != 1
+        raise "Error: Can not get response for search: status=#{res['status']}"
+      end
 
       return res
     end
@@ -93,6 +96,5 @@ module Garapon
       
       @session = res['gtvsession']
     end
-
   end
 end
